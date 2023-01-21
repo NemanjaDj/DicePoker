@@ -53,6 +53,8 @@ namespace DicePoker.Business.Services
         {
             List<int> numbers = StringOfNumebrsToList(handNumbers);
 
+            GetGroupedListOfNumbers(numbers);
+
             foreach (int indexAt in replaceNumbersAt)
             {
                 numbers[indexAt - 1] = GetRandomNumber();
@@ -76,7 +78,7 @@ namespace DicePoker.Business.Services
         private int GetRandomNumber()
         {
             Random random = new Random();
-            return random.Next(1, 6);
+            return random.Next(1, 7);
         }
 
         private string CastListOfIntsToString(List<int> numbers)
@@ -110,6 +112,19 @@ namespace DicePoker.Business.Services
 
             return 0;
         }
+
+        private List<int> GetGroupedListOfNumbers(List<int> numbers)
+        {
+            List<int> groupedListOfNumbers = new List<int>(6) { 0, 0, 0, 0, 0, 0};
+
+            foreach (int i in numbers)
+            {
+                groupedListOfNumbers[i - 1]++;
+            }
+
+            return groupedListOfNumbers;
+        }
+
 
         #endregion
     }

@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DicePoker.Business", "DiceP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DicePoker.Domain", "DicePoker.Domain\DicePoker.Domain.csproj", "{C9EBD24C-287C-49AC-AB50-F6F48F2D0B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicePoker.Data", "DicePoker.Data\DicePoker.Data.csproj", "{1E694B4A-0A5F-4703-875A-4FB13738465B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DicePoker.Data", "DicePoker.Data\DicePoker.Data.csproj", "{1E694B4A-0A5F-4703-875A-4FB13738465B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{C7C17E76-86FC-474B-85AA-B104CE28D4F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3009EDC7-3D92-4997-88B8-1FD3D56C9FFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DicePoker.Business.Tests", "DicePoker.Business.Tests\DicePoker.Business.Tests.csproj", "{902FDB84-6230-4637-B023-58F77F3CFF41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,20 @@ Global
 		{1E694B4A-0A5F-4703-875A-4FB13738465B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E694B4A-0A5F-4703-875A-4FB13738465B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E694B4A-0A5F-4703-875A-4FB13738465B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{902FDB84-6230-4637-B023-58F77F3CFF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{902FDB84-6230-4637-B023-58F77F3CFF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{902FDB84-6230-4637-B023-58F77F3CFF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{902FDB84-6230-4637-B023-58F77F3CFF41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B21FE7ED-B1DB-476C-A12B-4BDE51AE46D3} = {C7C17E76-86FC-474B-85AA-B104CE28D4F2}
+		{0E5C49A9-75F9-4ED9-84E6-91EBA5D5C772} = {C7C17E76-86FC-474B-85AA-B104CE28D4F2}
+		{C9EBD24C-287C-49AC-AB50-F6F48F2D0B31} = {C7C17E76-86FC-474B-85AA-B104CE28D4F2}
+		{1E694B4A-0A5F-4703-875A-4FB13738465B} = {C7C17E76-86FC-474B-85AA-B104CE28D4F2}
+		{902FDB84-6230-4637-B023-58F77F3CFF41} = {3009EDC7-3D92-4997-88B8-1FD3D56C9FFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F3EA512-2F0F-4B2C-B036-6DB5852B3251}
