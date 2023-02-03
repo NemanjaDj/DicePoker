@@ -2,12 +2,13 @@
 {
     public enum HandPowerType
     {
-        Pair = 1,
-        TwoPairs = 2,
-        ThreeOfAKind = 3,
-        Straight = 4,
-        FullHouse = 5,
-        FourOfAKind = 6,
-        FiveOfAKind = 7
+        Bust = 1,
+        Pair = 2,
+        TwoPairs = 3,
+        ThreeOfAKind = 4,
+        Straight = 5,
+        FullHouse = 6,
+        FourOfAKind = 7,
+        FiveOfAKind = 8
     }
 }
