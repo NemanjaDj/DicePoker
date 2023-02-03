@@ -1,5 +1,6 @@
 ﻿using DicePoker.Business.Interfaces;
 using DicePoker.Data.Interfaces;
+using DicePoker.Domain.Enum;
 using DicePoker.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,16 @@ namespace DicePoker.Business.Services
         #region class properties
 
         private readonly IHandRepository _handRepository;
+        private readonly IHandPowerRepository _handPowerRepository;
 
         #endregion
 
         #region constructors
 
-        public GameLogic(IHandRepository handRepository)
+        public GameLogic(IHandRepository handRepository, IHandPowerRepository handPowerRepository)
         {
             _handRepository = handRepository;
+            _handPowerRepository = handPowerRepository;
         }
 
         #endregion
@@ -28,7 +31,10 @@ namespace DicePoker.Business.Services
         public void SaveHand()
         {
             List<int> hand = ThrowDices();
+            HandPower handPower = GetPowerOfHand(GetGroupedListOfNumbers(hand));
+            
             _handRepository.SaveHand(CastListOfIntsToString(hand), 1);
+            _handPowerRepository.SaveHandPower(handPower);
         }
 
         public Hand GetHand(int id)
@@ -53,8 +59,6 @@ namespace DicePoker.Business.Services
         {
             List<int> numbers = StringOfNumebrsToList(handNumbers);
 
-            GetGroupedListOfNumbers(numbers);
-
             foreach (int indexAt in replaceNumbersAt)
             {
                 numbers[indexAt - 1] = GetRandomNumber();
@@ -77,8 +81,7 @@ namespace DicePoker.Business.Services
 
         private int GetRandomNumber()
         {
-            Random random = new Random();
-            return random.Next(1, 7);
+            return new Random().Next(1, 7);
         }
 
         private string CastListOfIntsToString(List<int> numbers)
@@ -106,11 +109,45 @@ namespace DicePoker.Business.Services
             return resultList;
         }
 
-        private int GetPowerOfHand()
+        private HandPower GetPowerOfHand(List<int> numbers)
         {
-            //TO-DO
+            HandPower newHandPower = new HandPower();
 
-            return 0;
+            newHandPower.HandId = 1;
+            newHandPower.LeadNumber = 1;
+            newHandPower.FollowingNumber = 3;
+
+            //TO-DO
+            if (numbers.Contains(5))
+            {
+                newHandPower.handPowerType = HandPowerType.FiveOfAKind;
+            }
+            else if (numbers.Contains(4))
+            {
+                newHandPower.handPowerType = HandPowerType.FourOfAKind;
+            }
+            else if (numbers.Contains(3) && numbers.Contains(2))
+            {
+                newHandPower.handPowerType = HandPowerType.FullHouse;
+            }
+            else if (numbers.Contains(3) && numbers.Contains(2))
+            {
+                newHandPower.handPowerType = HandPowerType.FullHouse;
+            }
+            else if (numbers.Contains(3))
+            {
+                newHandPower.handPowerType = HandPowerType.ThreeOfAKind;
+            }
+            else if (numbers.Contains(2))
+            {
+                newHandPower.handPowerType = HandPowerType.TwoPairs;
+            }
+            else
+            {
+                newHandPower.handPowerType = HandPowerType.Straight;
+            }
+
+            return newHandPower;
         }
 
         private List<int> GetGroupedListOfNumbers(List<int> numbers)
