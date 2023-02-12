@@ -29,7 +29,11 @@ namespace DicePoker.Business.Services
         public HandPower SaveHandPower(int handId)
         {
             string hand = _handRepository.GetHand(handId).Numbers;
-            HandPower handPower = GetPowerOfHand(GetGroupedListOfNumbers(hand.ConvertToListOfNumbers()));
+            List<int> numbers = GetGroupedListOfNumbers(hand.ConvertToListOfNumbers());
+            HandPower handPower = GetPowerOfHand(numbers, handId);
+
+            _handPowerRepository.SaveHandPower(handPower);
+
             return handPower;
         }
 
@@ -37,11 +41,11 @@ namespace DicePoker.Business.Services
 
         #region private methods
 
-        private HandPower GetPowerOfHand(List<int> numbers)
+        private HandPower GetPowerOfHand(List<int> numbers, int handId)
         {
             HandPower newHandPower = new HandPower();
 
-            newHandPower.HandId = 1;
+            newHandPower.HandId = handId;
             newHandPower.handPowerType = GetHandPowerType(numbers);
             newHandPower.LeadNumber = GetLeadNumber(numbers, newHandPower.handPowerType);
 
