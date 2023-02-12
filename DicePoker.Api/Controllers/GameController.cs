@@ -24,9 +24,9 @@ namespace DicePoker.Api.Controllers
         }
 
         [HttpPost]
-        public void Post()
+        public Hand Post()
         {
-            _gameLogic.SaveHand();
+            return _gameLogic.SaveHand();
         }
 
         [HttpPut]

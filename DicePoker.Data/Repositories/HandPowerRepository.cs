@@ -1,7 +1,7 @@
 ﻿using DicePoker.Data.Interfaces;
 using DicePoker.Domain.AppDbContext;
 using DicePoker.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DicePoker.Data.Repositories
 {
@@ -12,6 +12,11 @@ namespace DicePoker.Data.Repositories
         public HandPowerRepository()
         {
             context = new AppDbContext();
+        }
+
+        public HandPower GetHandPower(int handId)
+        {
+            return context.HandPower.FirstOrDefault(hp => hp.HandId == handId);
         }
 
         public void SaveHandPower(HandPower handPower)

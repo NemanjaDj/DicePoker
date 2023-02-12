@@ -32,8 +32,10 @@ namespace DicePoker.Api
             services.AddScoped<IGameLogic, GameLogic>();
             services.AddScoped<IHandRepository, HandRepository>();
             services.AddScoped<IHandPowerRepository, HandPowerRepository>();
+            services.AddScoped<IHandPowerLogic, HandPowerLogic>();
 
             services.AddControllers();
+            services.AddCors();
 
             services.AddSwaggerGen(c =>
             {
@@ -50,6 +52,12 @@ namespace DicePoker.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DicePoker.Api v1"));
             }
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:4200")
+                                .AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader()
+            );
 
             app.UseHttpsRedirection();
 

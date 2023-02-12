@@ -5,7 +5,7 @@ namespace DicePoker.Business.Interfaces
 {
     public interface IGameLogic
     {
-        public void SaveHand();
+        Hand SaveHand();
         Hand GetHand(int id);
         void UpdateHand(int id, List<int> replaceNumbersAt);
     }

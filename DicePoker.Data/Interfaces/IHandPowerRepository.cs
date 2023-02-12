@@ -5,5 +5,6 @@ namespace DicePoker.Data.Interfaces
     public interface IHandPowerRepository
     {
         void SaveHandPower(HandPower handPower);
+        HandPower GetHandPower(int handId);
     }
 }
