@@ -42,13 +42,21 @@ namespace DicePoker.Business.Services
             return _handRepository.GetHand(id);
         }
 
-        public void UpdateHand(int id, List<int> replaceNumbersAt)
+        public Hand UpdateHand(int id, List<int> replaceNumbersAt)
         {
             Hand hand = GetHand(id);
 
+            if(hand.NumberOfThrows >= 3)
+            {
+                throw new ArgumentException();
+            }
+
+            hand.NumberOfThrows++;
             hand.Numbers = ReplaceNumbersInHand(hand.Numbers, replaceNumbersAt);
 
             _handRepository.UpdateHand(hand);
+
+            return hand;
         }
 
         #endregion
@@ -94,20 +102,6 @@ namespace DicePoker.Business.Services
 
             return resultString.Substring(1, resultString.Length - 1);
         }
-
-        //private List<int> StringOfNumebrsToList(string numbers)
-        //{
-        //    List<int> resultList = new List<int>();
-
-        //    string formatedNumbers = numbers.Replace("-", "");
-
-        //    foreach (char c in formatedNumbers)
-        //    {
-        //        resultList.Add((int)char.GetNumericValue(c));
-        //    }
-
-        //    return resultList;
-        //}
 
         #endregion
     }

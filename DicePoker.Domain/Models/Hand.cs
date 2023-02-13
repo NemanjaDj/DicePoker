@@ -9,6 +9,5 @@ namespace DicePoker.Domain.Models
         public string Numbers { get; set; }
         public bool IsActive { get; set; }
         public int NumberOfThrows { get; set; }
-        public int PowerOfHand { get; set; }
     }
 }

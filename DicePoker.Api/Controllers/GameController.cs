@@ -1,6 +1,7 @@
 ﻿using DicePoker.Business.Interfaces;
 using DicePoker.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace DicePoker.Api.Controllers
@@ -30,9 +31,16 @@ namespace DicePoker.Api.Controllers
         }
 
         [HttpPut]
-        public void Put(int id, List<int> replaceNumbersAt)
+        public IActionResult Put(int id, List<int> replaceNumbersAt)
         {
-            _gameLogic.UpdateHand(id, replaceNumbersAt);
+            try
+            {
+                return Ok(_gameLogic.UpdateHand(id, replaceNumbersAt));
+            }
+            catch (ArgumentException argException)
+            {
+                return BadRequest();
+            }
         }
     }
 }

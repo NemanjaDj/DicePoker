@@ -7,6 +7,6 @@ namespace DicePoker.Business.Interfaces
     {
         Hand SaveHand();
         Hand GetHand(int id);
-        void UpdateHand(int id, List<int> replaceNumbersAt);
+        Hand UpdateHand(int id, List<int> replaceNumbersAt);
     }
 }
