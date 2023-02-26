@@ -21,7 +21,7 @@ namespace DicePoker.Data.Repositories
 
         public OpponentHand SaveOpponentHand(string numbers, int numberOfThrows)
         {
-            OpponentHand newHand = new OpponentHand() { HandNumbers = numbers, NumberOfThrows = numberOfThrows };
+            OpponentHand newHand = new OpponentHand() { HandNumbers = numbers, NumberOfThrows = numberOfThrows, IsComputer = true };
             context.OpponentHand.Add(newHand);
             context.SaveChanges();
 

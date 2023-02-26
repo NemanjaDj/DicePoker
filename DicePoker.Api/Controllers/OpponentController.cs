@@ -1,15 +1,10 @@
 ﻿using DicePoker.Business.Interfaces;
 using DicePoker.Domain.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DicePoker.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class OpponentController : ControllerBase
     {
