@@ -69,7 +69,7 @@ namespace DicePoker.Business.Services
 
             foreach (int indexAt in replaceNumbersAt)
             {
-                numbers[indexAt - 1] = GetRandomNumber();
+                numbers[indexAt] = GetRandomNumber();
             }
 
             return CastListOfIntsToString(numbers);
