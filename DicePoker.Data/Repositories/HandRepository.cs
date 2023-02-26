@@ -21,7 +21,7 @@ namespace DicePoker.Data.Repositories
 
         public Hand SaveHand(string numbers, int numberOfThrows)
         {
-            Hand newHand = new Hand() { Numbers = numbers, NumberOfThrows = numberOfThrows, IsActive = true };
+            Hand newHand = new Hand() { Numbers = numbers, NumberOfThrows = numberOfThrows};
             context.Hand.Add(newHand);
             context.SaveChanges();
 

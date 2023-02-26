@@ -8,5 +8,7 @@ namespace DicePoker.Business.Interfaces
         Hand SaveHand();
         Hand GetHand(int id);
         Hand UpdateHand(int id, List<int> replaceNumbersAt);
+        OpponentHand SaveOpponentHand();
+        OpponentHand GetOpponentHand(int id);
     }
 }

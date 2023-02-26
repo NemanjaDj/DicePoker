@@ -33,6 +33,7 @@ namespace DicePoker.Api
             services.AddScoped<IHandRepository, HandRepository>();
             services.AddScoped<IHandPowerRepository, HandPowerRepository>();
             services.AddScoped<IHandPowerLogic, HandPowerLogic>();
+            services.AddScoped<IOpponentHandRepository, OpponentHandRepository>();
 
             services.AddControllers();
             services.AddCors();

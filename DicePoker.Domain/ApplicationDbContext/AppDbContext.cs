@@ -27,6 +27,7 @@ namespace DicePoker.Domain.AppDbContext
         }
 
         public DbSet<Hand> Hand { get; set; }
+        public DbSet<OpponentHand> OpponentHand { get; set; }
         public DbSet<HandPower> HandPower { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

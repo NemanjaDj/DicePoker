@@ -14,16 +14,16 @@ namespace DicePoker.Business.Services
         #region class properties
 
         private readonly IHandRepository _handRepository;
-        private readonly IHandPowerRepository _handPowerRepository;
+        private readonly IOpponentHandRepository _opponentHandRepository;
 
         #endregion
 
         #region constructors
 
-        public GameLogic(IHandRepository handRepository, IHandPowerRepository handPowerRepository)
+        public GameLogic(IHandRepository handRepository, IOpponentHandRepository opponentHandRepository)
         {
             _handRepository = handRepository;
-            _handPowerRepository = handPowerRepository;
+            _opponentHandRepository = opponentHandRepository;
         }
 
         #endregion
@@ -33,7 +33,7 @@ namespace DicePoker.Business.Services
         public Hand SaveHand()
         {
             List<int> hand = ThrowDices();
-            
+
             return _handRepository.SaveHand(CastListOfIntsToString(hand), 1);
         }
 
@@ -57,6 +57,18 @@ namespace DicePoker.Business.Services
             _handRepository.UpdateHand(hand);
 
             return hand;
+        }
+
+        public OpponentHand SaveOpponentHand()
+        {
+            List<int> hand = ThrowDices();
+
+            return _opponentHandRepository.SaveOpponentHand(CastListOfIntsToString(hand), 1);
+        }
+
+        public OpponentHand GetOpponentHand(int id)
+        {
+            return _opponentHandRepository.GetOpponentHand(id);
         }
 
         #endregion
